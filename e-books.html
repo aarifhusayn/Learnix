@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-books Library | Learnix</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#0ea5e9',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .iframe-container {
+            height: calc(100vh - 240px);
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+
+        .dark .iframe-container {
+            background: #1e293b;
+            box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.4);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            background-color: #2563eb;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 transition-colors duration-300 overflow-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav px-6 py-4 flex justify-between items-center transition-all">
+        <div class="flex items-center gap-2">
+            <div class="bg-primary p-2 rounded-lg">
+                <i class="fas fa-graduation-cap text-white text-xl"></i>
+            </div>
+            <span class="text-2xl font-bold text-primary tracking-tight">Learnix</span>
+        </div>
+        
+        <div class="hidden md:flex gap-8 font-medium text-sm">
+            
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="https://ekumbh.aicte-india.org/allbook.php" target="_blank" class="hidden sm:flex items-center gap-2 text-[10px] font-bold text-slate-400 hover:text-primary transition-colors uppercase tracking-wider">
+                <i class="fas fa-external-link-alt"></i> External
+            </a>
+            
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-amber-400 hover:scale-110 transition-all shadow-sm">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 px-4 md:px-8 pb-6 h-screen flex flex-col">
+        
+        <!-- Breadcrumb Navigation -->
+        <nav class="flex text-[10px] text-slate-400 dark:text-slate-500 gap-2 mb-6 font-bold uppercase tracking-widest">
+            <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+            <span>/</span>
+            <span>/</span>
+            <span class="text-slate-600 dark:text-slate-300">Digital E-books</span>
+        </nav>
+
+        <!-- Header Info -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+            <div>
+                <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">Digital <span class="text-primary">E-books</span> Library</h1>
+                <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Access 1000+ official Technical Books integrated via AICTE e-Kumbh Portal.</p>
+            </div>
+            <div class="flex gap-2">
+                <span class="px-3 py-1 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold rounded-full border border-emerald-100 dark:border-emerald-800 flex items-center gap-1">
+                    <i class="fas fa-check-circle"></i> Official
+                </span>
+                <span class="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-primary dark:text-blue-400 text-[10px] font-bold rounded-full border border-blue-100 dark:border-blue-800 flex items-center gap-1">
+                    <i class="fas fa-book-open"></i> Free
+                </span>
+            </div>
+        </div>
+
+        <!-- Portal Integration (Iframe) -->
+        <div class="iframe-container flex-grow relative">
+            <!-- Loading Indicator -->
+            <div id="loader" class="absolute inset-0 flex flex-col items-center justify-center bg-white dark:bg-slate-800 z-0">
+                <div class="w-12 h-12 border-4 border-slate-200 dark:border-slate-700 border-t-primary rounded-full animate-spin"></div>
+                <p class="mt-4 text-slate-400 dark:text-slate-500 text-sm font-medium">Loading e-Kumbh Library...</p>
+            </div>
+            
+            <!-- The Iframe Integration -->
+            <iframe 
+                src="https://ekumbh.aicte-india.org/allbook.php" 
+                title="AICTE e-Kumbh Portal"
+                onload="document.getElementById('loader').style.display='none';"
+                class="relative z-10"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Footer / Credits -->
+        <div class="mt-4 text-center">
+            <p class="text-[10px] text-slate-400 dark:text-slate-500 font-medium italic">
+                © 2026 Learnix — Developed by Sayyed Aarif Hussain
+            </p>
+        </div>
+    </main>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Tab Focus Management
+        window.addEventListener('blur', () => {
+            // Logic if needed when user leaves tab
+        });
+    </script>
+</body>
+</html>
+

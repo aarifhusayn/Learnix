@@ -1,0 +1,690 @@
+     
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Engineering Resources | Learnix</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#0ea5e9',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .subject-card {
+            transition: all 0.3s ease;
+        }
+
+        .subject-card:hover {
+            border-color: #2563eb;
+            transform: translateX(5px);
+        }
+
+        .sticky-side {
+            top: 120px;
+        }
+
+        .section-header {
+            position: sticky;
+            top: 72px;
+            z-index: 30;
+            background: rgba(248, 250, 252, 0.9);
+            backdrop-filter: blur(8px);
+        }
+
+        .dark .section-header {
+            background: rgba(15, 23, 42, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav px-6 py-4 flex justify-between items-center transition-all">
+        <div class="flex items-center gap-2">
+            <div class="bg-primary p-2 rounded-lg">
+                <i class="fas fa-graduation-cap text-white text-xl"></i>
+            </div>
+            <span class="text-2xl font-bold text-primary">Learnix</span>
+        </div>
+        <div class="hidden md:flex gap-8 font-medium text-sm">
+            
+        </div>
+        <div class="flex items-center gap-4">
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-amber-400 hover:scale-110 transition-all shadow-sm">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+            <a href="contact.html" class="hidden md:block bg-primary/10 text-primary px-5 py-2 rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all">
+                Contribute Notes
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-32 pb-12 px-6 bg-white dark:bg-slate-800/50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end gap-6">
+            <div>
+                <nav class="flex text-xs text-slate-400 gap-2 mb-4 font-bold uppercase tracking-widest">
+                    <a href="index.html" class="hover:text-primary">Home</a>
+                    <span>/</span>
+                    <a href="study-materials.html" class="hover:text-primary">Materials</a>
+                    <span>/</span>
+                    <span class="text-slate-600 dark:text-slate-300">Civil Engineering</span>
+                </nav>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white">Civil Engineering</h1>
+                <p class="text-slate-500 dark:text-slate-400 mt-2">Comprehensive syllabus-based resources for all 6 semesters.</p>
+            </div>
+        </div>
+    </header>
+ <main class="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row gap-12">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="lg:w-64 flex-shrink-0 hidden lg:block">
+            <div class="sticky sticky-side space-y-2">
+                <p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4">Jump to Semester</p>
+                <a href="#sem1" class="block p-3 rounded-xl hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm hover:text-primary font-medium transition-all">Semester 1</a>
+                <a href="#sem2" class="block p-3 rounded-xl hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm hover:text-primary font-medium transition-all">Semester 2</a>
+                <a href="#sem3" class="block p-3 rounded-xl hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm hover:text-primary font-medium transition-all">Semester 3</a>
+                <a href="#sem4" class="block p-3 rounded-xl hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm hover:text-primary font-medium transition-all">Semester 4</a>
+                <a href="#sem5" class="block p-3 rounded-xl hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm hover:text-primary font-medium transition-all">Semester 5</a>
+                <a href="#sem6" class="block p-3 rounded-xl hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm hover:text-primary font-medium transition-all">Semester 6</a>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <div class="flex-grow space-y-20">
+
+            <!-- Semester 1 -->
+            <section id="sem1" class="space-y-6">
+                <div class="section-header py-4 border-b border-slate-200 dark:border-slate-700">
+  <div class="flex items-center justify-between">
+
+    <h2 class="text-2xl font-bold flex items-center gap-3">
+      <span class="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center text-sm">
+        01
+      </span>
+      First Semester
+    </h2>
+    <a href="https://drive.google.com/drive/folders/1xTwvoGxj5PBFnGdi-K6T71B0bW0xGJv1"
+       class="px-5 py-2 bg-slate-100 dark:bg-slate-700
+              text-slate-700 dark:text-slate-200
+              text-sm font-semibold rounded-lg
+              hover:bg-primary hover:text-white transition-all">
+      PYQs
+    </a>
+
+  </div>
+</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Communication Skills-I</span>
+                        <div class="flex gap-2">
+                            <a href="civil/communication-skills-1.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Applied Physics</span>
+                        <div class="flex gap-2">
+                            <a href="civil/applied-physics.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Applied Chemistry</span>
+                        <div class="flex gap-2">
+                            <a href="civil/applied-chemistry.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                           
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Applied Mathematics-I</span>
+                        <div class="flex gap-2">
+                            <a href="civil/applied-mathematics-I.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Applied Mechanics</span>
+                        <div class="flex gap-2">
+                            <a href="civil/engineering-mechanics.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+ <!-- Semester 2 -->
+            <section id="sem2" class="space-y-6">
+                <div class="section-header py-4 border-b border-slate-200 dark:border-slate-700">
+  <div class="flex items-center justify-between">
+
+    <h2 class="text-2xl font-bold flex items-center gap-3">
+      <span class="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center text-sm">
+        02
+      </span>
+      Second Semester
+    </h2>
+
+    <a href="https://drive.google.com/drive/folders/1G2vZAO8EImqDGeOrSMHIGLUO_2e8KoJh"
+       class="px-5 py-2 bg-slate-100 dark:bg-slate-700
+              text-slate-700 dark:text-slate-200
+              text-sm font-semibold rounded-lg
+              hover:bg-primary hover:text-white transition-all">
+      PYQs
+    </a>
+
+  </div>
+</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Applied Mathematics-II</span>
+                        <div class="flex gap-2">
+                            <a href="civil/applied-mathematics-ii.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                          
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Basic Electrical Engineering</span>
+                        <div class="flex gap-2">
+                            <a href="civil/bee.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Elements of Mechanical Engg.</span>
+                        <div class="flex gap-2">
+                            <a href="civil/eme.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Surveying-I</span>
+                        <div class="flex gap-2">
+                           <a href="civil/surveying-i.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Engineering Drawing-I</span>
+                        <div class="flex gap-2">
+                            <a href="civil/engineering-drawing.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<!-- Semester 3 -->
+            <section id="sem3" class="space-y-6">
+               <div class="section-header py-4 border-b border-slate-200 dark:border-slate-700">
+  <div class="flex items-center justify-between">
+
+    <h2 class="text-2xl font-bold flex items-center gap-3">
+      <span class="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center text-sm">
+        03
+      </span>
+      Third Semester
+    </h2>
+    <a href="https://drive.google.com/drive/folders/126d8ggsERcDsg5BzhKMhW5fDltqzsg0S"
+       class="px-5 py-2 bg-slate-100 dark:bg-slate-700
+              text-slate-700 dark:text-slate-200
+              text-sm font-semibold rounded-lg
+              hover:bg-primary hover:text-white transition-all">
+      PYQs
+    </a>
+
+  </div>
+</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Building Construction</span>
+                        <div class="flex gap-2">
+                            <a href="civil/building-construction.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                           
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Irrigation Engineering</span>
+                        <div class="flex gap-2">
+                            <a href="civil/irrigation-engineering.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Surveying - II</span>
+                        <div class="flex gap-2">
+                            <a href="civil/surveying-ii.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Hydraulics</span>
+                        <div class="flex gap-2">
+                            <a href="civil/hydraulics.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Computer Application</span>
+                        <div class="flex gap-2">
+                            <a href="communication-skills.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+ <!-- Semester 4 -->
+            <section id="sem4" class="space-y-6">
+                <div class="section-header py-4 border-b border-slate-200 dark:border-slate-700">
+  <div class="flex items-center justify-between">
+
+    <h2 class="text-2xl font-bold flex items-center gap-3">
+      <span class="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center text-sm">
+        04
+      </span>
+      Fourt Semester
+    </h2>
+    <a href="https://drive.google.com/drive/folders/16PA2DoU0pIOXRYG2QlHFLKZU9z2eeH4I"
+       class="px-5 py-2 bg-slate-100 dark:bg-slate-700
+              text-slate-700 dark:text-slate-200
+              text-sm font-semibold rounded-lg
+              hover:bg-primary hover:text-white transition-all">
+      PYQs
+    </a>
+
+  </div>
+</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Communication Skills II</span>
+                        <div class="flex gap-2">
+                            <a href="civil/communication-skills-ii.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Concrete Technology</span>
+                        <div class="flex gap-2">
+                            <a href="civil/concrete-technology.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Theory of Structures</span>
+                        <div class="flex gap-2">
+                           <a href="civil/tos.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Environmental Engineering-I</span>
+                        <div class="flex gap-2">
+                            <a href="civil/ee-i.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Construction Materials</span>
+                        <div class="flex gap-2">
+                            <a href="civil/cm.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<!-- Semester 5 -->
+            <section id="sem5" class="space-y-6">
+                <div class="section-header py-4 border-b border-slate-200 dark:border-slate-700">
+  <div class="flex items-center justify-between">
+
+    <h2 class="text-2xl font-bold flex items-center gap-3">
+      <span class="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center text-sm">
+        05
+      </span>
+      Fifth Semester
+    </h2>
+    <a href="https://drive.google.com/drive/folders/1keEL7EgsdSVUZT51OkxC3kDCEsAFohaN"
+       class="px-5 py-2 bg-slate-100 dark:bg-slate-700
+              text-slate-700 dark:text-slate-200
+              text-sm font-semibold rounded-lg
+              hover:bg-primary hover:text-white transition-all">
+      PYQs
+    </a>
+
+  </div>
+</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Soil Mechanics & Foundation Engg.</span>
+                        <div class="flex gap-2">
+                           <a href="civil/sm-fe.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Design of R.C.C. Structures-I</span>
+                        <div class="flex gap-2">
+                            <a href="civil/rcc-i.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Analysis of Structures</span>
+                        <div class="flex gap-2">
+                            <a href="civil/as.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                           
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Surveying – III</span>
+                        <div class="flex gap-2">
+                            <a href="civil/surveying-iii.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Constr. Management & Accounts</span>
+                        <div class="flex gap-2">
+                            <a href="civil/accounts.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+ <!-- Semester 6 -->
+            <section id="sem6" class="space-y-6">
+               <div class="section-header py-4 border-b border-slate-200 dark:border-slate-700">
+  <div class="flex items-center justify-between">
+
+    <h2 class="text-2xl font-bold flex items-center gap-3">
+      <span class="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center text-sm">
+        06
+      </span>
+      Sixth Semester
+    </h2>
+    <a href="https://drive.google.com/drive/folders/12HijBUChkzdE0RL_cVUJSN9oJ7c9MTBk"
+       class="px-5 py-2 bg-slate-100 dark:bg-slate-700
+              text-slate-700 dark:text-slate-200
+              text-sm font-semibold rounded-lg
+              hover:bg-primary hover:text-white transition-all">
+      PYQs
+    </a>
+
+  </div>
+</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Transportation Engineering</span>
+                        <div class="flex gap-2">
+                            <a href="communication-skills.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Design of Steel Structures</span>
+                        <div class="flex gap-2">
+                            <a href="communication-skills.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Estimating & Costing</span>
+                        <div class="flex gap-2">
+                            <a href="communication-skills.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Design of R.C.C. Structures-II</span>
+                        <div class="flex gap-2">
+                            <a href="communication-skills.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                    <div class="subject-card p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span class="font-bold text-slate-700 dark:text-slate-200 text-center sm:text-left">Environmental Engineering-II</span>
+                        <div class="flex gap-2">
+                            <a href="communication-skills.html"
+   class="px-9 py-2 bg-blue-50 dark:bg-blue-900/30 text-primary
+          dark:text-blue-400 text-xs font-bold rounded-lg
+          hover:bg-primary hover:text-white transition-all">
+  View
+</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-200 dark:border-slate-800 text-center text-slate-400 dark:text-slate-500">
+        <p class="text-sm">© 2024 Learnix Civil Hub. Build your future, brick by brick.</p>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Active Sidebar State Logic
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.sticky-side a');
+
+        window.addEventListener('scroll', () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('bg-white', 'dark:bg-slate-800', 'shadow-sm', 'text-primary');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('bg-white', 'dark:bg-slate-800', 'shadow-sm', 'text-primary');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

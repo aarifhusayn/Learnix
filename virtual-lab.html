@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Lab | Learnix</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#0ea5e9',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Glassmorphism Navigation */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Iframe Container Style */
+        .lab-viewport {
+            height: calc(100vh - 250px);
+            min-height: 500px;
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.1);
+            background: #000;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            background-color: #2563eb;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Loading Spinner */
+        .loader {
+            border-top-color: #2563eb;
+            animation: spinner 0.6s linear infinite;
+        }
+
+        @keyframes spinner {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 transition-colors duration-300 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav px-6 py-4 flex justify-between items-center transition-all">
+        <div class="flex items-center gap-2">
+            <div class="bg-primary p-2 rounded-lg">
+                <i class="fas fa-graduation-cap text-white text-xl"></i>
+            </div>
+            <span class="text-2xl font-bold text-primary tracking-tight">Learnix</span>
+        </div>
+        
+        <div class="hidden md:flex gap-8 font-medium text-sm">
+            
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="https://phet.colorado.edu/en/simulations/magnet-and-compass" target="_blank" class="hidden sm:flex items-center gap-2 text-[10px] font-bold text-slate-400 hover:text-primary transition-colors uppercase tracking-wider">
+                <i class="fas fa-expand"></i> External
+            </a>
+            
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-amber-400 hover:scale-110 transition-all shadow-sm border border-slate-200 dark:border-slate-700">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-12 px-4 md:px-8 max-w-7xl mx-auto">
+        
+        <!-- Breadcrumb Navigation -->
+        <nav class="flex text-[10px] text-slate-400 dark:text-slate-500 gap-2 mb-8 font-bold uppercase tracking-widest">
+            <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+            <span>/</span>
+            <a href="Study Materials.html" class="hover:text-primary transition-colors">Resources</a>
+            <span>/</span>
+            <span class="text-slate-600 dark:text-slate-300">Virtual Lab</span>
+        </nav>
+
+        <!-- Header Section -->
+        <div class="mb-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+            <div class="space-y-2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-primary dark:text-blue-400 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                    <i class="fas fa-flask"></i> Interactive Physics
+                </div>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">Magnet & <span class="text-primary">Compass</span> Lab</h1>
+                <p class="text-slate-500 dark:text-slate-400 max-w-xl">Visualize magnetic fields and understand how a compass interacts with a bar magnet in this interactive simulation.</p>
+            </div>
+            
+            <div class="flex gap-3">
+                <div class="bg-white dark:bg-slate-800 px-4 py-2 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-2">
+                    <i class="fas fa-bolt text-amber-500"></i>
+                    <span class="text-xs font-bold text-slate-600 dark:text-slate-300">PhET Tech</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Lab Viewport -->
+            <div class="lg:col-span-3 space-y-6">
+                <div class="lab-viewport relative group border border-slate-200 dark:border-slate-700 shadow-2xl">
+                    <!-- Loader -->
+                    <div id="lab-loader" class="absolute inset-0 bg-white dark:bg-slate-900 flex flex-col items-center justify-center z-10 transition-opacity duration-500">
+                        <div class="loader w-12 h-12 border-4 border-slate-200 dark:border-slate-800 rounded-full mb-4"></div>
+                        <p class="text-slate-400 dark:text-slate-500 font-medium text-sm animate-pulse">Initializing Lab Environment...</p>
+                    </div>
+
+                    <!-- External Iframe -->
+                    <iframe 
+                        src="https://phet.colorado.edu/sims/html/magnet-and-compass/latest/magnet-and-compass_all.html" 
+                        allowfullscreen
+                        onload="document.getElementById('lab-loader').style.opacity = '0'; setTimeout(() => { document.getElementById('lab-loader').style.display = 'none'; }, 500);">
+                    </iframe>
+                </div>
+                
+                <!-- Lab Toolbar -->
+                <div class="flex justify-between items-center bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <div class="flex items-center gap-4">
+                        <button onclick="window.location.reload()" class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm flex items-center gap-2 transition-colors">
+                            <i class="fas fa-sync-alt"></i> Reset
+                        </button>
+                    </div>
+                    <p class="text-[10px] text-slate-400 dark:text-slate-500 font-medium uppercase tracking-widest">Powered by Univ. of Colorado Boulder</p>
+                </div>
+            </div>
+
+            <!-- Experiment Sidebar -->
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-[32px] shadow-sm border border-slate-100 dark:border-slate-700">
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 text-sm uppercase tracking-wider">
+                        <i class="fas fa-list-check text-primary"></i> Lab Tasks
+                    </h3>
+                    <ul class="space-y-4 text-xs text-slate-500 dark:text-slate-400">
+                        <li class="flex gap-3">
+                            <span class="w-5 h-5 rounded-full bg-blue-50 dark:bg-blue-900/30 text-primary dark:text-blue-400 text-[10px] font-bold flex items-center justify-center flex-shrink-0">1</span>
+                            Move the compass around the magnet to observe field direction.
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="w-5 h-5 rounded-full bg-blue-50 dark:bg-blue-900/30 text-primary dark:text-blue-400 text-[10px] font-bold flex items-center justify-center flex-shrink-0">2</span>
+                            Observe magnetic field lines inside the bar magnet.
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="w-5 h-5 rounded-full bg-blue-50 dark:bg-blue-900/30 text-primary dark:text-blue-400 text-[10px] font-bold flex items-center justify-center flex-shrink-0">3</span>
+                            Toggle "Planet Earth" mode to see real-world compass behavior.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-900 dark:bg-black p-6 rounded-[32px] text-white border border-white/5 shadow-xl">
+                    <h3 class="font-bold mb-3 flex items-center gap-2 text-sm uppercase tracking-wider">
+                        <i class="fas fa-lightbulb text-amber-400"></i> Pro Tip
+                    </h3>
+                    <p class="text-[11px] text-slate-400 leading-relaxed">
+                        The compass needle's red end always points towards the Magnetic North. Change magnet strength to see how field intensity varies!
+                    </p>
+                </div>
+
+                <a href="contact.html" class="block w-full text-center py-4 bg-primary/10 dark:bg-primary/20 text-primary dark:text-blue-400 rounded-2xl font-bold text-sm hover:bg-primary hover:text-white transition-all shadow-sm">
+                    Request Lab Manual
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="py-8 text-center border-t border-slate-100 dark:border-slate-800">
+        <p class="text-xs text-slate-400 dark:text-slate-500 font-medium uppercase tracking-widest">© 2026 Learnix — Developed by Sayyed Aarif Hussain</p>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>
+

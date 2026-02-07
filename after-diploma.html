@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career & Lateral Entry | Learnix</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#0ea5e9',
+                        dark: '#1e293b',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'float': 'float 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .career-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .career-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px -12px rgba(37, 99, 235, 0.15);
+        }
+
+        .blue-blur {
+            filter: blur(100px);
+            background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, rgba(255,255,255,0) 70%);
+        }
+
+        .nav-link-active {
+            position: relative;
+            color: #2563eb;
+        }
+
+        .nav-link-active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 antialiased transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav px-6 py-4 flex justify-between items-center transition-all">
+        <div class="flex items-center gap-2">
+            <div class="bg-primary p-2 rounded-lg shadow-lg shadow-blue-200">
+                <i class="fas fa-rocket text-white text-xl"></i>
+            </div>
+            <span class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Learnix</span>
+        </div>
+        
+        <div class="hidden md:flex gap-8 font-semibold text-sm">
+           
+        </div>
+
+        <div class="flex items-center gap-4">
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-amber-400 hover:scale-110 transition-all shadow-sm">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-40 pb-20 px-6 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] blue-blur -z-10"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] blue-blur -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto text-center animate-fade-in-up">
+            <!-- Breadcrumb Navigation -->
+            <nav class="flex justify-center text-[10px] text-slate-400 dark:text-slate-500 gap-2 mb-8 font-bold uppercase tracking-widest">
+                <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+                <span>/</span>
+                
+                <span>/</span>
+                <span class="text-slate-600 dark:text-slate-300">After Diploma</span>
+            </nav>
+
+            <span class="px-4 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-primary dark:text-blue-400 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] mb-6 inline-block">
+                Beyond the Diploma
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight">
+                Your Roadmap to <br><span class="text-primary italic">Success & Excellence.</span>
+            </h1>
+            <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg mb-10">
+                Explore Lateral Entry exams to pursue B.Tech or dive into lucrative career paths in the government and private sectors. Your future starts here.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#leet" class="px-8 py-4 bg-primary text-white rounded-2xl font-bold shadow-xl shadow-blue-200 hover:translate-y-[-2px] transition-all">B.Tech Lateral Entry</a>
+                <a href="#career" class="px-8 py-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-2xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">Career Opportunities</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Lateral Entry (LEET) Section -->
+    <section id="leet" class="py-24 bg-white dark:bg-slate-800/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white">B.Tech Lateral Entry (LEET)</h2>
+                    <p class="text-slate-500 dark:text-slate-400 mt-3">Direct admission into the 2nd year of Engineering for Diploma holders.</p>
+                </div>
+                <div class="bg-blue-50 dark:bg-blue-900/20 text-primary dark:text-blue-400 px-4 py-2 rounded-xl text-xs font-bold border border-blue-100 dark:border-blue-800">
+                    <i class="fas fa-graduation-cap mr-2"></i> Higher Education
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Exam 1 -->
+                <div class="career-card p-8 bg-slate-50 dark:bg-slate-800 rounded-[40px] border border-slate-100 dark:border-slate-700 group">
+                    <div class="w-14 h-14 bg-white dark:bg-slate-700 rounded-2xl shadow-sm flex items-center justify-center text-primary text-2xl mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 dark:text-white">JELET (WB)</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">The gateway to top engineering colleges in West Bengal. High competition and great opportunities.</p>
+                    <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-400 mb-8">
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-500"></i> Math, Physics, Chemistry</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-500"></i> Engineering Mechanics</li>
+                    </ul>
+                   <a href="https://wbjeeb.nic.in/jelet/"
+   class="block text-center w-full py-3 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-xs font-bold hover:bg-primary hover:text-white dark:hover:bg-primary hover:border-primary transition-all dark:text-slate-200">
+   Exam Details
+</a>        </div>
+
+                <!-- Exam 2 -->
+                <div class="career-card p-8 bg-slate-50 dark:bg-slate-800 rounded-[40px] border border-slate-100 dark:border-slate-700 group">
+                    <div class="w-14 h-14 bg-white dark:bg-slate-700 rounded-2xl shadow-sm flex items-center justify-center text-primary text-2xl mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 dark:text-white">DTU / IPU LEET</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">Access prestigious universities in Delhi like DTU and NSUT through dedicated lateral entry tests.</p>
+                    <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-400 mb-8">
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-500"></i> Analytical Ability</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-500"></i> Technical Subjects</li>
+                    </ul>
+                    <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://dtu.ac.in/Web/Admission/brochure/2025/brochure_btechle.pdf&ved=2ahUKEwiz5Yv_hsaSAxXdVmwGHdjwAR8QFnoECCEQAQ&usg=AOvVaw134RzGxD8ATfpSM9aTZJOs"
+   class="block text-center w-full py-3 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-xs font-bold hover:bg-primary hover:text-white dark:hover:bg-primary hover:border-primary transition-all dark:text-slate-200">
+   Exam Details
+</a>
+                </div>
+
+                <!-- Exam 3 -->
+                <div class="career-card p-8 bg-slate-50 dark:bg-slate-800 rounded-[40px] border border-slate-100 dark:border-slate-700 group">
+                    <div class="w-14 h-14 bg-white dark:bg-slate-700 rounded-2xl shadow-sm flex items-center justify-center text-primary text-2xl mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 dark:text-white">State LEETs</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">Exams like UPSEE, Haryana LEET, and Bihar BCECE for admissions in state government colleges.</p>
+                    <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-400 mb-8">
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-500"></i> Branch Specific Syllabus</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-500"></i> State Dominance</li>
+                    </ul>
+                    <a href="#"
+   class="block text-center w-full py-3 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-xs font-bold hover:bg-primary hover:text-white dark:hover:bg-primary hover:border-primary transition-all dark:text-slate-200">
+   Explore All States
+</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Options Section -->
+    <section id="career" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">Career Paths After Diploma</h2>
+                <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">Immediate employment opportunities for those ready to step into the professional world.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Path 1: Govt Jobs -->
+                <div class="flex gap-6 p-8 bg-white dark:bg-slate-800 rounded-[40px] shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all group">
+                    <div class="w-20 h-20 bg-blue-50 dark:bg-blue-900/20 text-primary rounded-3xl flex-shrink-0 flex items-center justify-center text-3xl group-hover:bg-primary group-hover:text-white transition-all">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Government Sector (PSUs)</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Apply for Junior Engineer (JE) posts in organizations like <b>SSC JE, RRB, ISRO, DRDO,</b> and <b>State PWDs</b>. High job security and prestige.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-400">SSC JE</span>
+                            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-400">RAILWAYS</span>
+                            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-400">PSUs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Path 2: Private Sector -->
+                <div class="flex gap-6 p-8 bg-white dark:bg-slate-800 rounded-[40px] shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all group">
+                    <div class="w-20 h-20 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-500 rounded-3xl flex-shrink-0 flex items-center justify-center text-3xl group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Private Industry Jobs</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Join as a <b>Technician, Field Engineer, or Quality Controller</b> in MNCs like TATA, Reliance, Larsen & Toubro, or tech giants.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-400">MANUFACTURING</span>
+                            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-400">CONSTRUCTION</span>
+                            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-400">IT SECTOR</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Path 3: Entrepreneurship -->
+                <div class="flex gap-6 p-8 bg-white dark:bg-slate-800 rounded-[40px] shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all group">
+                    <div class="w-20 h-20 bg-amber-50 dark:bg-amber-900/20 text-amber-500 rounded-3xl flex-shrink-0 flex items-center justify-center text-3xl group-hover:bg-amber-500 group-hover:text-white transition-all">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Entrepreneurship</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Start your own consultancy, repair firm, or contracting business. Diploma holders have strong practical skills to lead startups.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-400">STARTUPS</span>
+                            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-400">CONSULTANCY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Path 4: Apprenticeship -->
+                <div class="flex gap-6 p-8 bg-white dark:bg-slate-800 rounded-[40px] shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all group">
+                    <div class="w-20 h-20 bg-purple-50 dark:bg-purple-900/20 text-purple-500 rounded-3xl flex-shrink-0 flex items-center justify-center text-3xl group-hover:bg-purple-500 group-hover:text-white transition-all">
+                        <i class="fas fa-user-gear"></i>
+                    </div>
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Apprenticeship (NATS)</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Gain 1-year paid training in top government or private organizations. A great way to build your resume and gain industry experience.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-400">TRAINING</span>
+                            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-400">STIPEND</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 px-6">
+        <div class="max-w-5xl mx-auto bg-slate-900 dark:bg-black rounded-[50px] p-12 md:p-24 text-center relative overflow-hidden shadow-2xl">
+            <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary opacity-20 blur-3xl"></div>
+            <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-secondary opacity-20 blur-3xl"></div>
+            
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-8 leading-tight">Download Your <br><span class="text-primary italic">Career Playbook</span> Today.</h2>
+            <p class="text-slate-400 mb-10 max-w-xl mx-auto">Get a free PDF guide containing salary insights, exam schedules, and a list of top companies hiring diploma holders.</p>
+            <button class="bg-primary text-white px-10 py-4 rounded-2xl font-bold shadow-lg shadow-blue-500/20 hover:scale-105 transition-all">
+                Download Free Guide
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 dark:bg-slate-900 py-12 px-6 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-2">
+                <div class="bg-primary p-2 rounded-lg"><i class="fas fa-rocket text-white"></i></div>
+                <span class="text-2xl font-bold text-slate-900 dark:text-white">Learnix</span>
+            </div>
+            <p class="text-sm text-slate-400 font-medium">© 2026 Learnix — Developed by Sayyed Aarif Hussain</p>
+            <div class="flex gap-6">
+                <a href="#" class="text-slate-400 hover:text-primary transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-slate-400 hover:text-primary transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-slate-400 hover:text-primary transition-colors"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Smooth reveal logic for sections
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('opacity-0');
+            observer.observe(section);
+        });
+
+        // Navbar Shadow logic
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
+        });
+    </script>
+</body>
+</html>

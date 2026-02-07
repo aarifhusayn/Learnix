@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainwave Studio | Learnix</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#a855f7',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .wave-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .wave-card.active {
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+            transform: scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.1), 0 10px 10px -5px rgba(99, 102, 241, 0.04);
+        }
+        .pulse-ring {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(1.05); }
+        }
+        input[type="range"] {
+            accent-color: #6366f1;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 transition-colors duration-300 min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav px-6 py-4 flex justify-between items-center transition-all">
+        <div class="flex items-center gap-2">
+            <div class="bg-primary p-2 rounded-lg shadow-lg">
+                <i class="fas fa-brain text-white text-xl"></i>
+            </div>
+            <span class="text-2xl font-bold text-primary tracking-tight">Learnix</span>
+        </div>
+        
+        <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-amber-400 hover:scale-110 transition-all shadow-sm border border-slate-200 dark:border-slate-700">
+            <i class="fas fa-moon dark:hidden"></i>
+            <i class="fas fa-sun hidden dark:block"></i>
+        </button>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">Optimize Your Mind <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary text-5xl md:text-7xl">Binaural Studio</span></h1>
+            <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto text-lg leading-relaxed">Play pure frequencies directly on Learnix. Best experienced with stereo headphones.</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Left: Wave Selector -->
+            <div class="lg:col-span-8 space-y-6">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-bold text-xl flex items-center gap-2">
+                        <i class="fas fa-wave-square text-primary"></i> Frequency Presets
+                    </h3>
+                </div>
+                
+                <div id="wave-selector" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Epsilon (New) -->
+                    <div class="wave-card p-6 bg-white dark:bg-slate-800 rounded-[32px] border border-slate-200 dark:border-slate-700" data-type="epsilon">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center text-xl">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Epsilon (0.5Hz)</h4>
+                                <p class="text-xs text-slate-500">Extra Deep Recovery</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delta -->
+                    <div class="wave-card p-6 bg-white dark:bg-slate-800 rounded-[32px] border border-slate-200 dark:border-slate-700 active" data-type="delta">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center text-xl">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Delta Waves (2Hz)</h4>
+                                <p class="text-xs text-slate-500">Deep Sleep & Healing</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Theta (Om removed) -->
+                    <div class="wave-card p-6 bg-white dark:bg-slate-800 rounded-[32px] border border-slate-200 dark:border-slate-700" data-type="theta">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 flex items-center justify-center text-xl">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Theta Waves (6Hz)</h4>
+                                <p class="text-xs text-slate-500">Meditation & REM Sleep</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alpha -->
+                    <div class="wave-card p-6 bg-white dark:bg-slate-800 rounded-[32px] border border-slate-200 dark:border-slate-700" data-type="alpha">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 flex items-center justify-center text-xl">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Alpha Waves (10Hz)</h4>
+                                <p class="text-xs text-slate-500">Relaxation & Creativity</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Beta -->
+                    <div class="wave-card p-6 bg-white dark:bg-slate-800 rounded-[32px] border border-slate-200 dark:border-slate-700" data-type="beta">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-100 dark:bg-amber-900/30 text-amber-600 flex items-center justify-center text-xl">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Beta Waves (20Hz)</h4>
+                                <p class="text-xs text-slate-500">Focus & Concentration</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gamma (New) -->
+                    <div class="wave-card p-6 bg-white dark:bg-slate-800 rounded-[32px] border border-slate-200 dark:border-slate-700" data-type="gamma">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-red-100 dark:bg-red-900/30 text-red-600 flex items-center justify-center text-xl">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Gamma (40Hz)</h4>
+                                <p class="text-xs text-slate-500">Peak Mental State</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lambda (New) -->
+                    <div class="wave-card p-6 bg-white dark:bg-slate-800 rounded-[32px] border border-slate-200 dark:border-slate-700" data-type="lambda">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 flex items-center justify-center text-xl">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Lambda (150Hz)</h4>
+                                <p class="text-xs text-slate-500">Higher Consciousness</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ambient Sounds Mix -->
+                <div class="mt-8 p-8 bg-slate-900 text-white rounded-[40px] shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-3xl rounded-full"></div>
+                    <h3 class="font-bold text-lg mb-6 flex items-center gap-2"><i class="fas fa-volume-up text-primary"></i> Ambient Mixers</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-slate-400">
+                                <span>Rainy Ambience</span>
+                                <span id="rain-val">0%</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <i class="fas fa-cloud-rain w-5 text-blue-400"></i>
+                                <input type="range" id="rain-vol" class="w-full" min="0" max="1" step="0.05" value="0">
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-slate-400">
+                                <span>White Noise</span>
+                                <span id="noise-val">0%</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <i class="fas fa-wind w-5 text-slate-300"></i>
+                                <input type="range" id="noise-vol" class="w-full" min="0" max="1" step="0.05" value="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Session Control -->
+            <div class="lg:col-span-4 space-y-6">
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-[40px] border border-slate-100 dark:border-slate-700 shadow-xl text-center flex flex-col items-center">
+                    <div id="play-status" class="w-28 h-28 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center mb-8 transition-all">
+                        <i id="main-icon" class="fas fa-play text-4xl text-primary translate-x-1"></i>
+                    </div>
+                    
+                    <h2 id="active-wave-name" class="text-2xl font-bold mb-2">Delta Session</h2>
+                    <p id="timer-display" class="text-4xl font-mono font-black text-primary mb-10 tracking-wider">00:00</p>
+
+                    <div class="w-full space-y-4">
+                        <button id="start-btn" class="w-full py-5 bg-primary text-white rounded-[24px] font-bold text-lg shadow-xl shadow-indigo-500/30 hover:scale-[1.02] active:scale-95 transition-all">
+                            Start Session
+                        </button>
+                        <div class="flex gap-3">
+                            <select id="session-time" class="flex-grow p-4 bg-slate-50 dark:bg-slate-700 rounded-2xl font-bold text-sm outline-none border border-slate-100 dark:border-slate-600 focus:border-primary transition-all">
+                                <option value="15">15 Minutes</option>
+                                <option value="30">30 Minutes</option>
+                                <option value="60">1 Hour</option>
+                                <option value="120">2 Hours</option>
+                            </select>
+                            <button id="stop-btn" class="p-4 bg-red-100 dark:bg-red-900/30 text-red-600 rounded-2xl hover:bg-red-200 transition-all">
+                                <i class="fas fa-stop"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/30 dark:to-blue-950/30 rounded-[32px] border border-indigo-100 dark:border-indigo-800/50">
+                    <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
+                        <i class="fas fa-info-circle text-primary"></i> How it works?
+                    </h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                        Binaural beats send a slightly different frequency to each ear. Your brain perceives the "beat" (the difference), which encourages brainwave synchronization for enhanced mental states.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Hidden Audio Loops (Standard Open Sources) -->
+    <audio id="rain-audio" loop src="https://assets.mixkit.co/active_storage/sfx/2405/2405-preview.mp3"></audio>
+    <audio id="noise-audio" loop src="https://assets.mixkit.co/active_storage/sfx/2387/2387-preview.mp3"></audio>
+
+    <script>
+        // Theme Storage
+        const themeToggle = document.getElementById('theme-toggle');
+        if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // --- Core Audio Logic ---
+        let audioCtx, leftOsc, rightOsc, leftGain, rightGain, masterGain;
+        let isPlaying = false;
+        let timerInterval;
+        let activeWave = { name: 'Delta', freq: 2, carrier: 150 };
+
+        const waves = {
+            epsilon: { name: 'Epsilon', freq: 0.5, carrier: 100 },
+            delta: { name: 'Delta', freq: 2, carrier: 150 },
+            theta: { name: 'Theta', freq: 6, carrier: 200 },
+            alpha: { name: 'Alpha', freq: 10, carrier: 250 },
+            beta: { name: 'Beta', freq: 20, carrier: 300 },
+            gamma: { name: 'Gamma', freq: 40, carrier: 400 },
+            lambda: { name: 'Lambda', freq: 150, carrier: 500 }
+        };
+
+        const startBtn = document.getElementById('start-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        const mainIcon = document.getElementById('main-icon');
+        const playStatus = document.getElementById('play-status');
+        const waveCards = document.querySelectorAll('.wave-card');
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                
+                masterGain = audioCtx.createGain();
+                masterGain.gain.value = 0.6; // Base volume for oscillator
+
+                leftGain = audioCtx.createGain();
+                rightGain = audioCtx.createGain();
+                leftGain.gain.value = 1;
+                rightGain.gain.value = 1;
+
+                const leftPanner = audioCtx.createStereoPanner();
+                const rightPanner = audioCtx.createStereoPanner();
+                leftPanner.pan.value = -1;
+                rightPanner.pan.value = 1;
+
+                leftOsc = audioCtx.createOscillator();
+                rightOsc = audioCtx.createOscillator();
+                
+                leftOsc.type = 'sine';
+                rightOsc.type = 'sine';
+
+                leftOsc.connect(leftPanner).connect(leftGain).connect(masterGain).connect(audioCtx.destination);
+                rightOsc.connect(rightPanner).connect(rightGain).connect(masterGain).connect(audioCtx.destination);
+
+                leftOsc.start();
+                rightOsc.start();
+            }
+        }
+
+        function updateFrequencies() {
+            if (leftOsc && rightOsc) {
+                const now = audioCtx.currentTime;
+                leftOsc.frequency.setTargetAtTime(activeWave.carrier, now, 0.1);
+                rightOsc.frequency.setTargetAtTime(activeWave.carrier + activeWave.freq, now, 0.1);
+            }
+        }
+
+        function startSession() {
+            if (!isPlaying) {
+                initAudio();
+                audioCtx.resume();
+                updateFrequencies();
+                isPlaying = true;
+                startBtn.innerText = "Session Active";
+                mainIcon.className = "fas fa-waveform text-4xl text-white";
+                mainIcon.classList.remove('translate-x-1');
+                playStatus.className = "w-28 h-28 rounded-full bg-primary flex items-center justify-center mb-8 pulse-ring";
+                startTimer();
+                
+                // Play ambient if slider > 0
+                if(rainVol.value > 0) rainAudio.play();
+                if(noiseVol.value > 0) noiseAudio.play();
+            }
+        }
+
+        function stopSession() {
+            if (audioCtx) audioCtx.suspend();
+            isPlaying = false;
+            startBtn.innerText = "Start Session";
+            mainIcon.className = "fas fa-play text-4xl text-primary translate-x-1";
+            playStatus.className = "w-28 h-28 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center mb-8";
+            clearInterval(timerInterval);
+            document.getElementById('timer-display').innerText = "00:00";
+            
+            rainAudio.pause();
+            noiseAudio.pause();
+        }
+
+        // Timer
+        function startTimer() {
+            let mins = parseInt(document.getElementById('session-time').value);
+            let seconds = mins * 60;
+            
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                seconds--;
+                let m = Math.floor(seconds / 60);
+                let s = seconds % 60;
+                document.getElementById('timer-display').innerText = 
+                    `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+                
+                if (seconds <= 0) stopSession();
+            }, 1000);
+        }
+
+        // UI Listeners
+        waveCards.forEach(card => {
+            card.addEventListener('click', () => {
+                waveCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                const type = card.dataset.type;
+                activeWave = waves[type];
+                document.getElementById('active-wave-name').innerText = `${activeWave.name} Session`;
+                if (isPlaying) updateFrequencies();
+            });
+        });
+
+        startBtn.addEventListener('click', startSession);
+        stopBtn.addEventListener('click', stopSession);
+
+        // Ambience Controls
+        const rainAudio = document.getElementById('rain-audio');
+        const noiseAudio = document.getElementById('noise-audio');
+        const rainVol = document.getElementById('rain-vol');
+        const noiseVol = document.getElementById('noise-vol');
+
+        rainVol.addEventListener('input', (e) => {
+            const v = e.target.value;
+            rainAudio.volume = v;
+            document.getElementById('rain-val').innerText = Math.round(v * 100) + '%';
+            if (v > 0 && isPlaying) rainAudio.play();
+            else if (v == 0) rainAudio.pause();
+        });
+
+        noiseVol.addEventListener('input', (e) => {
+            const v = e.target.value;
+            noiseAudio.volume = v;
+            document.getElementById('noise-val').innerText = Math.round(v * 100) + '%';
+            if (v > 0 && isPlaying) noiseAudio.play();
+            else if (v == 0) noiseAudio.pause();
+        });
+    </script>
+</body>
+</html>
